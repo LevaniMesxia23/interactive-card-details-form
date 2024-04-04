@@ -31,6 +31,7 @@ const Body = styled.div`
   min-width: 23.4375rem;
   height: 15rem;
   flex-shrink: 0;
+  padding: 1.5rem;
 `;
 
 const Container = styled.div`
