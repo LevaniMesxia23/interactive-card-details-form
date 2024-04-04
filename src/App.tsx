@@ -1,6 +1,5 @@
 import Cards from "./components/Cards";
 import FormsHeader from "./components/FormsHeader";
-import FormsFooter from "./components/FormsFooter";
 import GlobalStyles from "./styles/GlobalStyles";
 import MainMobile from "../public/images/bg-main-mobile.png";
 import styled from "styled-components";
@@ -14,7 +13,6 @@ function App() {
           <Cards />
           <FormDiv>
             <FormsHeader />
-            <FormsFooter />
           </FormDiv>
         </Container>
       </Body>
