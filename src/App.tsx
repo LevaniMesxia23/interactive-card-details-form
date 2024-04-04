@@ -2,29 +2,41 @@ import Cards from "./components/Cards";
 import FormsHeader from "./components/FormsHeader";
 import FormsFooter from "./components/FormsFooter";
 import GlobalStyles from "./styles/GlobalStyles";
+import MainMobile from "../public/images/bg-main-mobile.png";
 import styled from "styled-components";
 
 function App() {
   return (
     <>
-      <GlobalStyles />
-      <Container>
-        <ImagesBox></ImagesBox>
-        <FormDiv>
-          <NameNumber></NameNumber>
-          <ExpDate></ExpDate>
-        </FormDiv>
-      </Container>
+      <Body>
+        <GlobalStyles />
+        <Container>
+          <Cards />
+          <FormDiv>
+            <FormsHeader />
+            <FormsFooter />
+          </FormDiv>
+        </Container>
+      </Body>
     </>
   );
 }
 
 export default App;
 
-const Container = styled.div``;
+const Body = styled.div`
+  background: url(${MainMobile});
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-width: 23.4375rem;
+  height: 15rem;
+  flex-shrink: 0;
+`;
 
-const ImagesBox = styled.div``;
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+`;
 
 const FormDiv = styled.div``;
-const NameNumber = styled.div``;
-const ExpDate = styled.div``;

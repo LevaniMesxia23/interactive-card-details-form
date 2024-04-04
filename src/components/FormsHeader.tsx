@@ -1,9 +1,13 @@
-
+import styled from "styled-components";
 
 export default function FormsHeader() {
   return (
-    <div>
+    <Container>
       
-    </div>
+    </Container>
   )
 }
+
+const Container = styled.div`
+  
+`

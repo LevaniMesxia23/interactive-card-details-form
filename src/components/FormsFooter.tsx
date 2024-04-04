@@ -1,9 +1,13 @@
-
+import styled from "styled-components"
 
 export default function FormsFooter() {
   return (
-    <div>
+    <Container>
 
-    </div>
+    </Container>
   )
 }
+
+const Container = styled.div`
+
+`
