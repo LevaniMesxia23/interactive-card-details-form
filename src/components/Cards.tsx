@@ -5,7 +5,9 @@ import CardFront from "../../public/images/bg-card-front.png";
 export default function Cards() {
   return (
     <Container>
-      <img className="card-back" src={CardBack} alt="" />
+      <div className="card-back">
+        <span>000</span>
+      </div>
       <div className="card-front">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -46,11 +48,24 @@ const Container = styled.div`
 
   .card-back {
     position: absolute;
+    background-image: url(${CardBack});
+    background-size: cover;
+    border-radius: 0.375rem;
     width: 17.875rem;
     height: 9.8125rem;
     flex-shrink: 0;
     top: 0;
     left: 0;
+    padding: 4.5rem 2.31rem 4.6rem 14.31rem;
+
+    color: var(--White, #fff);
+    text-align: right;
+    font-size: 0.5625rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.08038rem;
+    text-transform: uppercase;
   }
 
   .card-front {
@@ -60,9 +75,9 @@ const Container = styled.div`
     flex-shrink: 0;
     bottom: 0;
     right: 0;
-    background: url(${CardFront});
+    background-image: url(${CardFront});
+    background-size: cover;
     border-radius: 0.375rem;
-    background: linear-gradient(164deg, #6348fe 4.74%, #610595 88.83%);
     margin-bottom: -0.4rem;
     padding: 1.1rem 1.31rem 1.29rem 1.19rem;
 
