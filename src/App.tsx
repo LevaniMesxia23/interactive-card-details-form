@@ -1,5 +1,5 @@
 import Cards from "./components/Cards";
-import FormsHeader from "./components/FormsHeader";
+import FormsHeader from "./components/Forms";
 import GlobalStyles from "./styles/GlobalStyles";
 import MainMobile from "../public/images/bg-main-mobile.png";
 import styled from "styled-components";

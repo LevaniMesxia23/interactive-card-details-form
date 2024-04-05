@@ -6,7 +6,29 @@ export default function Cards() {
   return (
     <Container>
       <img className="card-back" src={CardBack} alt="" />
-      <img className="card-front" src={CardFront} alt="" />
+      <div className="card-front">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="54"
+          height="30"
+          viewBox="0 0 54 30"
+          fill="none"
+        >
+          <ellipse cx="15.0932" cy="15" rx="15.0932" ry="15" fill="white" />
+          <path
+            d="M53.5 15C53.5 18.4489 50.6859 21.25 47.2081 21.25C43.7302 21.25 40.9161 18.4489 40.9161 15C40.9161 11.5511 43.7302 8.75 47.2081 8.75C50.6859 8.75 53.5 11.5511 53.5 15Z"
+            stroke="white"
+          />
+        </svg>
+
+        <div>
+          <span className="private-num">0000 0000 0000 0000</span>
+          <div className="name-date">
+            <span>JANE APPLESEED</span>
+            <span>00/00</span>
+          </div>
+        </div>
+      </div>
     </Container>
   );
 }
@@ -38,5 +60,41 @@ const Container = styled.div`
     flex-shrink: 0;
     bottom: 0;
     right: 0;
+    background: url(${CardFront});
+    border-radius: 0.375rem;
+    background: linear-gradient(164deg, #6348fe 4.74%, #610595 88.83%);
+    margin-bottom: -0.4rem;
+    padding: 1.1rem 1.31rem 1.29rem 1.19rem;
+
+    div {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      .private-num {
+        color: var(--White, #fff);
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.1375rem;
+        margin-top: 2.31rem;
+      }
+
+      .name-date {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        max-width: 15.31rem;
+        margin-top: 1.06rem;
+
+        color: var(--White, #fff);
+        font-size: 0.5625rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 0.08038rem;
+        text-transform: uppercase;
+      }
+    }
   }
 `;

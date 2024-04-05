@@ -8,9 +8,9 @@ export default function FormsHeader() {
         <input type="text" placeholder="e.g. Jane Appleseed" />
       </div>
 
-      <div className="number-div">
+      <div className="card-number-div">
         <span>Card Number</span>
-        <input type="number" placeholder="e.g. 1234 5678 9123 0000" />
+        <input type="text" placeholder="e.g. 1234 5678 9123 0000" />
       </div>
       <Forms>
         <div>
@@ -38,7 +38,7 @@ const Container = styled.div`
   flex-direction: column;
 
   .name-div,
-  .number-div {
+  .card-number-div {
     display: flex;
     width: 20.4375rem;
     flex-direction: column;
@@ -74,6 +74,7 @@ const Container = styled.div`
 const Forms = styled.div`
   display: flex;
   justify-content: center;
+  column-gap: 0.3rem;
 
   div {
     display: flex;
@@ -101,9 +102,7 @@ const Forms = styled.div`
     padding-left: 1rem;
     margin-top: 0.56rem;
   }
-  .mm-yy{
-    margin-left: 0.2rem;
-  }
+
   .span-cvc {
     margin-left: 0.7rem;
   }
@@ -111,7 +110,6 @@ const Forms = styled.div`
     width: 10.25rem;
     height: 2.8125rem;
     flex-shrink: 0;
-    margin-left: 0.7rem;
   }
 `;
 const Button = styled.button`
