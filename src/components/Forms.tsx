@@ -1,6 +1,22 @@
+import { useState, ChangeEvent } from "react";
 import styled from "styled-components";
 
 export default function FormsHeader() {
+  const [cardNumber, setCardNumber] = useState<string>("");
+  const [expiryYear, setExpiryYear] = useState<string>("");
+
+  const handleCardNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
+    setCardNumber(newValue);
+    console.log(newValue);
+  };
+
+  const handleExpiryYearChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
+    setExpiryYear(newValue);
+    console.log(newValue);
+  };
+
   return (
     <Container>
       <div className="name-div">
@@ -10,12 +26,20 @@ export default function FormsHeader() {
 
       <div className="card-number-div">
         <span>Card Number</span>
-        <input type="text" placeholder="e.g. 1234 5678 9123 0000" />
+        <input
+          type="number"
+          placeholder="e.g. 1234 5678 9123 0000"
+          onChange={handleCardNumberChange}
+        />
       </div>
       <Forms>
         <div>
           <span>EXP. DATE</span>
-          <input type="number" placeholder="MM" />
+          <input
+            type="number"
+            placeholder="MM"
+            onChange={handleExpiryYearChange}
+          />
         </div>
         <div>
           <span className="mm-yy">(MM/YY)</span>

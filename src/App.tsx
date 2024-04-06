@@ -1,10 +1,12 @@
 import Cards from "./components/Cards";
+import { useState, ChangeEvent } from "react";
 import FormsHeader from "./components/Forms";
 import GlobalStyles from "./styles/GlobalStyles";
 import MainMobile from "../public/images/bg-main-mobile.png";
 import styled from "styled-components";
 
 function App() {
+
   return (
     <>
       <Body>
@@ -12,7 +14,7 @@ function App() {
         <Container>
           <Cards />
           <FormDiv>
-            <FormsHeader />
+            <FormsHeader/>
           </FormDiv>
         </Container>
       </Body>
