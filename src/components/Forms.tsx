@@ -1,21 +1,24 @@
-import { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
 import styled from "styled-components";
 
-export default function FormsHeader() {
-  const [cardNumber, setCardNumber] = useState<string>("");
-  const [expiryYear, setExpiryYear] = useState<string>("");
+interface FormsHeaderProps{
+  cardNumber: string;
+  setCardNumber: React.Dispatch<React.SetStateAction<string>>;
+  expiryYear: string;
+  setExpiryYear: React.Dispatch<React.SetStateAction<string>>;
+  handleCardNumberChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleExpiryYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
+}
 
-  const handleCardNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value;
-    setCardNumber(newValue);
-    console.log(newValue);
-  };
-
-  const handleExpiryYearChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value;
-    setExpiryYear(newValue);
-    console.log(newValue);
-  };
+ const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
+  const {
+    cardNumber,
+    setCardNumber,
+    expiryYear,
+    setExpiryYear,
+    handleCardNumberChange,
+    handleExpiryYearChange,
+  } = props;
 
   return (
     <Container>
@@ -26,24 +29,16 @@ export default function FormsHeader() {
 
       <div className="card-number-div">
         <span>Card Number</span>
-        <input
-          type="number"
-          placeholder="e.g. 1234 5678 9123 0000"
-          onChange={handleCardNumberChange}
-        />
+        <input type="text" placeholder="e.g. 1234 5678 9123 0000" onChange={cardNumber}/>
       </div>
       <Forms>
         <div>
           <span>EXP. DATE</span>
-          <input
-            type="number"
-            placeholder="MM"
-            onChange={handleExpiryYearChange}
-          />
+          <input type="number" placeholder="MM" onChange={expiryYear}/>
         </div>
         <div>
           <span className="mm-yy">(MM/YY)</span>
-          <input type="number" placeholder="YY" />
+          <input type="number" placeholder="YY"  />
         </div>
         <div>
           <span className="span-cvc">CVC</span>
@@ -54,6 +49,8 @@ export default function FormsHeader() {
     </Container>
   );
 }
+
+export default FormsHeader;
 
 const Container = styled.div`
   display: flex;

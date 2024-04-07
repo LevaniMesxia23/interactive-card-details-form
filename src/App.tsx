@@ -1,12 +1,26 @@
 import Cards from "./components/Cards";
-import { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
 import FormsHeader from "./components/Forms";
 import GlobalStyles from "./styles/GlobalStyles";
 import MainMobile from "../public/images/bg-main-mobile.png";
 import styled from "styled-components";
 
-function App() {
 
+function App() {
+  const [cardNumber, setCardNumber] = useState<string>("");
+  const [expiryYear, setExpiryYear] = useState<string>("");
+
+  const handleCardNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
+    setCardNumber(newValue);
+    console.log(newValue);
+  };
+
+  const handleExpiryYearChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
+    setExpiryYear(newValue);
+    console.log(newValue);
+  };
   return (
     <>
       <Body>
@@ -14,7 +28,14 @@ function App() {
         <Container>
           <Cards />
           <FormDiv>
-            <FormsHeader/>
+            <FormsHeader
+              cardNumber={cardNumber}
+              setCardNumber={setCardNumber}
+              expiryYear={expiryYear}
+              setExpiryYear={setExpiryYear}
+              handleCardNumberChange={handleCardNumberChange}
+              handleExpiryYearChange={handleExpiryYearChange}
+            />
           </FormDiv>
         </Container>
       </Body>
