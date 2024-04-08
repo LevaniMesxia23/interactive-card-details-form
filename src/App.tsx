@@ -1,6 +1,6 @@
 import Cards from "./components/Cards";
-import React, { useState, ChangeEvent } from "react";
-import FormsHeader from "./components/Forms";
+import React, { useState, ChangeEvent, ChangeEventHandler } from "react";
+import Forms from "./components/Forms";
 import GlobalStyles from "./styles/GlobalStyles";
 import MainMobile from "../public/images/bg-main-mobile.png";
 import styled from "styled-components";
@@ -26,9 +26,15 @@ function App() {
       <Body>
         <GlobalStyles />
         <Container>
-          <Cards />
+          <Cards
+              cardNumber={cardNumber}
+              setCardNumber={setCardNumber}
+              expiryYear={expiryYear}
+              setExpiryYear={setExpiryYear}
+              handleCardNumberChange={handleCardNumberChange}
+              handleExpiryYearChange={handleExpiryYearChange}/>
           <FormDiv>
-            <FormsHeader
+            <Forms
               cardNumber={cardNumber}
               setCardNumber={setCardNumber}
               expiryYear={expiryYear}

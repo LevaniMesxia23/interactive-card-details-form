@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, ChangeEventHandler } from "react";
 import styled from "styled-components";
 
 interface FormsHeaderProps{
@@ -29,12 +29,12 @@ interface FormsHeaderProps{
 
       <div className="card-number-div">
         <span>Card Number</span>
-        <input type="text" placeholder="e.g. 1234 5678 9123 0000" onChange={cardNumber}/>
+        <input type="text" placeholder="e.g. 1234 5678 9123 0000" onChange={handleCardNumberChange}/>
       </div>
       <Forms>
         <div>
           <span>EXP. DATE</span>
-          <input type="number" placeholder="MM" onChange={expiryYear}/>
+          <input type="number" placeholder="MM" onChange={handleExpiryYearChange}/>
         </div>
         <div>
           <span className="mm-yy">(MM/YY)</span>

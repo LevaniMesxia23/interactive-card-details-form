@@ -1,8 +1,27 @@
 import styled from "styled-components";
 import CardBack from "../../public/images/bg-card-back.png";
 import CardFront from "../../public/images/bg-card-front.png";
+import { ChangeEventHandler, ChangeEvent } from "react";
 
-export default function Cards() {
+interface CardsProps{
+  cardNumber: string;
+  setCardNumber: React.Dispatch<React.SetStateAction<string>>;
+  expiryYear: string;
+  setExpiryYear: React.Dispatch<React.SetStateAction<string>>;
+  handleCardNumberChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleExpiryYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Cards: React.FC<CardsProps> = (props) => {
+  const {
+    cardNumber,
+    setCardNumber,
+    expiryYear,
+    setExpiryYear,
+    handleCardNumberChange,
+    handleExpiryYearChange,
+  } = props;
+
   return (
     <Container>
       <div className="card-back">
@@ -24,7 +43,7 @@ export default function Cards() {
         </svg>
 
         <div>
-          <span className="private-num">0000 0000 0000 0000</span>
+          <span className="private-num">{cardNumber}</span>
           <div className="name-date">
             <span>JANE APPLESEED</span>
             <span>00/00</span>
@@ -35,6 +54,8 @@ export default function Cards() {
   );
 }
 
+
+export default Cards;
 const Container = styled.div`
   min-width: 13.3rem;
   height: 15rem;
