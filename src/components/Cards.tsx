@@ -4,22 +4,28 @@ import CardFront from "../../public/images/bg-card-front.png";
 import { ChangeEventHandler, ChangeEvent } from "react";
 
 interface CardsProps{
+  monthYear: string;
+  setMonthYear: React.Dispatch<React.SetStateAction<string>>;
   cardNumber: string;
   setCardNumber: React.Dispatch<React.SetStateAction<string>>;
   expiryYear: string;
   setExpiryYear: React.Dispatch<React.SetStateAction<string>>;
   handleCardNumberChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleExpiryYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleMonthYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Cards: React.FC<CardsProps> = (props) => {
   const {
+    monthYear,
+    setMonthYear,
     cardNumber,
     setCardNumber,
     expiryYear,
     setExpiryYear,
     handleCardNumberChange,
     handleExpiryYearChange,
+    handleMonthYearChange,
   } = props;
 
   return (
@@ -43,10 +49,10 @@ const Cards: React.FC<CardsProps> = (props) => {
         </svg>
 
         <div>
-          <span className="private-num">{cardNumber}</span>
+          <span className="private-num">{(props.cardNumber ? cardNumber : "0000 0000 0000 0000")}</span>
           <div className="name-date">
             <span>JANE APPLESEED</span>
-            <span>00/00</span>
+            <span>{props.expiryYear ? expiryYear : "00"}/{props.monthYear ? monthYear : "00"}</span>
           </div>
         </div>
       </div>

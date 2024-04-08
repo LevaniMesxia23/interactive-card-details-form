@@ -2,22 +2,28 @@ import React, { useState, ChangeEvent, ChangeEventHandler } from "react";
 import styled from "styled-components";
 
 interface FormsHeaderProps{
+  monthYear: string;
+  setMonthYear: React.Dispatch<React.SetStateAction<string>>;
   cardNumber: string;
   setCardNumber: React.Dispatch<React.SetStateAction<string>>;
   expiryYear: string;
   setExpiryYear: React.Dispatch<React.SetStateAction<string>>;
   handleCardNumberChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleExpiryYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleMonthYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
  const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
   const {
+    monthYear,
+    setMonthYear,
     cardNumber,
     setCardNumber,
     expiryYear,
     setExpiryYear,
     handleCardNumberChange,
     handleExpiryYearChange,
+    handleMonthYearChange,
   } = props;
 
   return (
@@ -29,16 +35,16 @@ interface FormsHeaderProps{
 
       <div className="card-number-div">
         <span>Card Number</span>
-        <input type="text" placeholder="e.g. 1234 5678 9123 0000" onChange={handleCardNumberChange}/>
+        <input type="text" placeholder="e.g. 1234 5678 9123 0000" onChange={handleCardNumberChange} value={cardNumber}/>
       </div>
       <Forms>
         <div>
           <span>EXP. DATE</span>
-          <input type="number" placeholder="MM" onChange={handleExpiryYearChange}/>
+          <input type="number" placeholder="MM" onChange={handleExpiryYearChange} value={expiryYear}/>
         </div>
         <div>
           <span className="mm-yy">(MM/YY)</span>
-          <input type="number" placeholder="YY"  />
+          <input type="number" placeholder="YY" onChange={handleMonthYearChange} value={monthYear}/>
         </div>
         <div>
           <span className="span-cvc">CVC</span>
