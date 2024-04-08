@@ -8,9 +8,12 @@ interface FormsHeaderProps{
   setCardNumber: React.Dispatch<React.SetStateAction<string>>;
   expiryYear: string;
   setExpiryYear: React.Dispatch<React.SetStateAction<string>>;
+  cvcNumber: string;
+  setCvcNumber: React.Dispatch<React.SetStateAction<string>>;
   handleCardNumberChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleExpiryYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleMonthYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleCvcChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
  const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
@@ -21,9 +24,12 @@ interface FormsHeaderProps{
     setCardNumber,
     expiryYear,
     setExpiryYear,
+    cvcNumber,
+    setCvcNumber,
     handleCardNumberChange,
     handleExpiryYearChange,
     handleMonthYearChange,
+    handleCvcChange,
   } = props;
 
   return (
@@ -48,7 +54,7 @@ interface FormsHeaderProps{
         </div>
         <div>
           <span className="span-cvc">CVC</span>
-          <input className="cvc" type="number" placeholder="e.g. 123" />
+          <input className="cvc" type="number" placeholder="e.g. 123" onChange={handleCvcChange} value={cvcNumber}/>
         </div>
       </Forms>
       <Button>Confirm</Button>

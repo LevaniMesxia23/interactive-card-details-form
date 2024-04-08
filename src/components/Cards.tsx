@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import CardBack from "../../public/images/bg-card-back.png";
 import CardFront from "../../public/images/bg-card-front.png";
-import { ChangeEventHandler, ChangeEvent } from "react";
+import React, { ChangeEventHandler, ChangeEvent } from "react";
 
 interface CardsProps{
   monthYear: string;
@@ -10,9 +10,12 @@ interface CardsProps{
   setCardNumber: React.Dispatch<React.SetStateAction<string>>;
   expiryYear: string;
   setExpiryYear: React.Dispatch<React.SetStateAction<string>>;
+  cvcNumber: string;
+  setCvcNumber: React.Dispatch<React.SetStateAction<string>>
   handleCardNumberChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleExpiryYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleMonthYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleCvcChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Cards: React.FC<CardsProps> = (props) => {
@@ -23,6 +26,8 @@ const Cards: React.FC<CardsProps> = (props) => {
     setCardNumber,
     expiryYear,
     setExpiryYear,
+    cvcNumber,
+    setCvcNumber,
     handleCardNumberChange,
     handleExpiryYearChange,
     handleMonthYearChange,
@@ -31,7 +36,7 @@ const Cards: React.FC<CardsProps> = (props) => {
   return (
     <Container>
       <div className="card-back">
-        <span>000</span>
+        <span>{props.cvcNumber ? cvcNumber : "000"}</span>
       </div>
       <div className="card-front">
         <svg
