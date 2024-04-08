@@ -11,6 +11,7 @@ function App() {
   const [expiryYear, setExpiryYear] = useState<string>("");
   const [monthYear, setMonthYear] = useState<string>("");
   const [cvcNumber, setCvcNumber] = useState<string>("");
+  const [name, setName] = useState<string>("");
 
   const handleCardNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
     let newValue = event.target.value;
@@ -49,26 +50,20 @@ function App() {
     setCvcNumber(newValue);
     console.log(newValue);
   }
+
+  const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
+    let newValue = event.target.value;
+    setName(newValue);
+    console.log(newValue);
+  }
   return (
     <>
       <Body>
         <GlobalStyles />
         <Container>
           <Cards
-              cvcNumber={cvcNumber}
-              setCvcNumber={setCvcNumber}
-              monthYear={monthYear}
-              setMonthYear={setMonthYear}
-              cardNumber={cardNumber}
-              setCardNumber={setCardNumber}
-              expiryYear={expiryYear}
-              setExpiryYear={setExpiryYear}
-              handleCardNumberChange={handleCardNumberChange}
-              handleExpiryYearChange={handleExpiryYearChange}
-              handleMonthYearChange={handleMonthYearChange}
-              handleCvcChange={handleCvcChange}/>
-          <FormDiv>
-            <Forms
+              name={name}
+              setName={setName}
               cvcNumber={cvcNumber}
               setCvcNumber={setCvcNumber}
               monthYear={monthYear}
@@ -81,6 +76,24 @@ function App() {
               handleExpiryYearChange={handleExpiryYearChange}
               handleMonthYearChange={handleMonthYearChange}
               handleCvcChange={handleCvcChange}
+              handleNameChange={handleNameChange}/>
+          <FormDiv>
+            <Forms
+              name={name}
+              setName={setName}
+              cvcNumber={cvcNumber}
+              setCvcNumber={setCvcNumber}
+              monthYear={monthYear}
+              setMonthYear={setMonthYear}
+              cardNumber={cardNumber}
+              setCardNumber={setCardNumber}
+              expiryYear={expiryYear}
+              setExpiryYear={setExpiryYear}
+              handleCardNumberChange={handleCardNumberChange}
+              handleExpiryYearChange={handleExpiryYearChange}
+              handleMonthYearChange={handleMonthYearChange}
+              handleCvcChange={handleCvcChange}
+              handleNameChange={handleNameChange}
             />
           </FormDiv>
         </Container>

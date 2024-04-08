@@ -12,10 +12,13 @@ interface CardsProps{
   setExpiryYear: React.Dispatch<React.SetStateAction<string>>;
   cvcNumber: string;
   setCvcNumber: React.Dispatch<React.SetStateAction<string>>
+  name: string;
+  setName: React.Dispatch<React.SetStateAction<string>>;
   handleCardNumberChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleExpiryYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleMonthYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleCvcChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleNameChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Cards: React.FC<CardsProps> = (props) => {
@@ -28,9 +31,12 @@ const Cards: React.FC<CardsProps> = (props) => {
     setExpiryYear,
     cvcNumber,
     setCvcNumber,
+    name,
+    setName,
     handleCardNumberChange,
     handleExpiryYearChange,
     handleMonthYearChange,
+    handleNameChange,
   } = props;
 
   return (
@@ -56,7 +62,7 @@ const Cards: React.FC<CardsProps> = (props) => {
         <div>
           <span className="private-num">{(props.cardNumber ? cardNumber : "0000 0000 0000 0000")}</span>
           <div className="name-date">
-            <span>JANE APPLESEED</span>
+            <span>{props.name ? name : "JANE APPLESEED"}</span>
             <span>{props.expiryYear ? expiryYear : "00"}/{props.monthYear ? monthYear : "00"}</span>
           </div>
         </div>

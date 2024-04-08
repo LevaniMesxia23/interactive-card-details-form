@@ -10,10 +10,13 @@ interface FormsHeaderProps{
   setExpiryYear: React.Dispatch<React.SetStateAction<string>>;
   cvcNumber: string;
   setCvcNumber: React.Dispatch<React.SetStateAction<string>>;
+  name: string;
+  setName: React.Dispatch<React.SetStateAction<string>>;
   handleCardNumberChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleExpiryYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleMonthYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleCvcChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleNameChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
  const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
@@ -26,17 +29,20 @@ interface FormsHeaderProps{
     setExpiryYear,
     cvcNumber,
     setCvcNumber,
+    name,
+    setName,
     handleCardNumberChange,
     handleExpiryYearChange,
     handleMonthYearChange,
     handleCvcChange,
+    handleNameChange,
   } = props;
 
   return (
     <Container>
       <div className="name-div">
         <span>Cardholder Name</span>
-        <input type="text" placeholder="e.g. Jane Appleseed" />
+        <input type="text" placeholder="e.g. Jane Appleseed" onChange={handleNameChange} value={name} />
       </div>
 
       <div className="card-number-div">
