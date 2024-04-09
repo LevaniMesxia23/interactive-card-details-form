@@ -53,30 +53,33 @@ const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
   const validateINputs = () => {
     setError(error + 1);
     if (!name.trim()) {
-      setNameError("Please,Enter something");
+      setNameError("Can’t be blank");
     } else {
       setNameError("");
     }
 
     if (!cardNumber.trim()) {
-      setCardNumberError("Please,Enter something");
+      setCardNumberError("Can’t be blank");
+    } else if (cardNumber.length < 16) {
+      setCardNumberError("Enter full number");
     } else {
       setCardNumberError("");
     }
+    console.log(cardNumber);
 
     if (!expiryYear.trim()) {
-      setExpiryYearError("Please,Enter something");
+      setExpiryYearError("Can’t be blank");
     } else {
       setExpiryYearError("");
     }
 
     if (!cvcNumber.trim()) {
-      setCvcNumberError("Please,Enter something");
+      setCvcNumberError("Can’t be blank");
     } else {
       setCvcNumberError("");
     }
     if (!monthYear.trim()) {
-      setMonthYearError("Please,Enter something");
+      setMonthYearError("Can’t be blank");
     } else {
       setMonthYearError("");
     }
@@ -136,7 +139,9 @@ const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
             onChange={handleExpiryYearChange}
             value={expiryYear}
           />
-          {expiryYearError && <span className="error">{expiryYearError}</span>}
+          {expiryYearError && (
+            <span className="error error-month">{expiryYearError}</span>
+          )}
         </div>
 
         <div>
@@ -154,7 +159,9 @@ const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
             onChange={handleMonthYearChange}
             value={monthYear}
           />
-          {monthYearError && <span className="error">{monthYearError}</span>}
+          {monthYearError && (
+            <span className="error error-yy">{monthYearError}</span>
+          )}
         </div>
         <div>
           <span className="span-cvc">CVC</span>
@@ -217,11 +224,14 @@ const Container = styled.div`
       background: var(--White, #fff);
       padding-left: 1rem;
     }
-    /* .error {
-      border-radius: 0.5rem;
-      border: 1px solid var(--Red, #FF5050);
-      background: var(--White, #FFF);
-    } */
+    .error {
+      color: var(--Red, #ff5050);
+      font-feature-settings: "clig" off, "liga" off;
+      font-size: 0.75rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
   }
   .name-div {
     margin-top: 3.02rem;
@@ -257,6 +267,21 @@ const Forms = styled.div`
     background: var(--White, #fff);
     padding-left: 1rem;
     margin-top: 0.56rem;
+  }
+  .error {
+    color: var(--Red, #ff5050);
+    font-feature-settings: "clig" off, "liga" off;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    line-height: normal;
+  }
+  .error-month {
+    margin-right: -1.5rem;
+  }
+  .error-yy {
+    display: none;
   }
 
   .span-cvc {
