@@ -1,7 +1,12 @@
-import React, { useState, ChangeEvent, ChangeEventHandler } from "react";
+import React, {
+  useState,
+  ChangeEvent,
+  ChangeEventHandler,
+  useEffect,
+} from "react";
 import styled from "styled-components";
 
-interface FormsHeaderProps{
+interface FormsHeaderProps {
   monthYear: string;
   setMonthYear: React.Dispatch<React.SetStateAction<string>>;
   cardNumber: string;
@@ -19,7 +24,14 @@ interface FormsHeaderProps{
   handleNameChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
- const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
+const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
+  const [error, setError] = useState(0);
+  const [nameError, setNameError] = useState<string>("");
+  const [cardNumberError, setCardNumberError] = useState<string>("");
+  const [expiryYearError, setExpiryYearError] = useState<string>("");
+  const [cvcNumberError, setCvcNumberError] = useState<string>("");
+  const [monthYearError, setMonthYearError] = useState<string>("");
+
   const {
     monthYear,
     setMonthYear,
@@ -38,37 +50,139 @@ interface FormsHeaderProps{
     handleNameChange,
   } = props;
 
+  const validateINputs = () => {
+    setError(error + 1);
+    if (!name.trim()) {
+      setNameError("Please,Enter something");
+    } else {
+      setNameError("");
+    }
+
+    if (!cardNumber.trim()) {
+      setCardNumberError("Please,Enter something");
+    } else {
+      setCardNumberError("");
+    }
+
+    if (!expiryYear.trim()) {
+      setExpiryYearError("Please,Enter something");
+    } else {
+      setExpiryYearError("");
+    }
+
+    if (!cvcNumber.trim()) {
+      setCvcNumberError("Please,Enter something");
+    } else {
+      setCvcNumberError("");
+    }
+    if (!monthYear.trim()) {
+      setMonthYearError("Please,Enter something");
+    } else {
+      setMonthYearError("");
+    }
+  };
+
   return (
     <Container>
       <div className="name-div">
         <span>Cardholder Name</span>
-        <input type="text" placeholder="e.g. Jane Appleseed" onChange={handleNameChange} value={name} />
+        <input
+          style={
+            error == 0
+              ? { border: "1px solid #DFDEE0" }
+              : !name
+              ? { border: "1.5px solid #FF7979" }
+              : {}
+          }
+          type="text"
+          placeholder="e.g. Jane Appleseed"
+          onChange={handleNameChange}
+          value={name}
+        />
+        {nameError && <span className="error">{nameError}</span>}
       </div>
 
       <div className="card-number-div">
         <span>Card Number</span>
-        <input type="text" placeholder="e.g. 1234 5678 9123 0000" onChange={handleCardNumberChange} value={cardNumber}/>
+        <input
+          style={
+            error == 0
+              ? { border: "1px solid #DFDEE0" }
+              : !cardNumber
+              ? { border: "1.5px solid #FF7979" }
+              : {}
+          }
+          type="text"
+          placeholder="e.g. 1234 5678 9123 0000"
+          onChange={handleCardNumberChange}
+          value={cardNumber}
+        />
+        {cardNumberError && <span className="error">{cardNumberError}</span>}
       </div>
+
       <Forms>
         <div>
           <span>EXP. DATE</span>
-          <input type="number" placeholder="MM" onChange={handleExpiryYearChange} value={expiryYear}/>
+          <input
+            style={
+              error == 0
+                ? { border: "1px solid #DFDEE0" }
+                : !expiryYear
+                ? { border: "1.5px solid #FF7979" }
+                : {}
+            }
+            type="number"
+            placeholder="MM"
+            onChange={handleExpiryYearChange}
+            value={expiryYear}
+          />
+          {expiryYearError && <span className="error">{expiryYearError}</span>}
         </div>
+
         <div>
           <span className="mm-yy">(MM/YY)</span>
-          <input type="number" placeholder="YY" onChange={handleMonthYearChange} value={monthYear}/>
+          <input
+            style={
+              error == 0
+                ? { border: "1px solid #DFDEE0" }
+                : !monthYear
+                ? { border: "1.5px solid #FF7979" }
+                : {}
+            }
+            type="number"
+            placeholder="YY"
+            onChange={handleMonthYearChange}
+            value={monthYear}
+          />
+          {monthYearError && <span className="error">{monthYearError}</span>}
         </div>
         <div>
           <span className="span-cvc">CVC</span>
-          <input className="cvc" type="number" placeholder="e.g. 123" onChange={handleCvcChange} value={cvcNumber}/>
+          <input
+            style={
+              error == 0
+                ? { border: "1px solid #DFDEE0" }
+                : !cvcNumber
+                ? { border: "1.5px solid #FF7979" }
+                : {}
+            }
+            className="cvc"
+            type="number"
+            placeholder="e.g. 123"
+            onChange={handleCvcChange}
+            value={cvcNumber}
+          />
+          {cvcNumberError && <span className="error">{cvcNumberError}</span>}
         </div>
       </Forms>
-      <Button>Confirm</Button>
+      <Button onClick={validateINputs}>Confirm</Button>
     </Container>
   );
-}
+};
 
 export default FormsHeader;
+
+const errorColor = "red";
 
 const Container = styled.div`
   display: flex;
@@ -93,7 +207,6 @@ const Container = styled.div`
       font-weight: 500;
       line-height: normal;
       letter-spacing: 0.125rem;
-      text-transform: uppercase;
     }
     input {
       width: 20.4375rem;
@@ -104,6 +217,11 @@ const Container = styled.div`
       background: var(--White, #fff);
       padding-left: 1rem;
     }
+    /* .error {
+      border-radius: 0.5rem;
+      border: 1px solid var(--Red, #FF5050);
+      background: var(--White, #FFF);
+    } */
   }
   .name-div {
     margin-top: 3.02rem;
@@ -127,7 +245,6 @@ const Forms = styled.div`
     font-weight: 500;
     line-height: normal;
     letter-spacing: 0.125rem;
-    text-transform: uppercase;
     margin-left: 0.1rem;
   }
 

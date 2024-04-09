@@ -103,7 +103,6 @@ const Container = styled.div`
     font-weight: 500;
     line-height: normal;
     letter-spacing: 0.08038rem;
-    text-transform: uppercase;
   }
 
   .card-front {
@@ -146,7 +145,6 @@ const Container = styled.div`
         font-weight: 500;
         line-height: normal;
         letter-spacing: 0.08038rem;
-        text-transform: uppercase;
       }
     }
   }
