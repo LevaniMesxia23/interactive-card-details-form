@@ -6,7 +6,7 @@ import React, {
 } from "react";
 import styled from "styled-components";
 
-interface FormsHeaderProps{
+interface FormsHeaderProps {
   monthYear: string;
   setMonthYear: React.Dispatch<React.SetStateAction<string>>;
   cardNumber: string;
@@ -54,7 +54,7 @@ const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
     handleNameChange,
   } = props;
 
-  const validateINputs = () => {
+  const validateInputs = () => {
     setError(error + 1);
     if (!name.trim()) {
       setNameError("Can’t be blank");
@@ -88,19 +88,27 @@ const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
       setMonthYearError("");
     }
 
-    if (
-      !nameError &&
-      !cardNumberError &&
-      !expiryYearError &&
-      !cvcNumberError &&
-      !monthYearError
-    ) {
-      setIsValid(true)
-    } else {
-      setIsValid(false)
-    }
+    
   };
 
+  useEffect(() => {
+    if (
+      name != "" &&
+      expiryYear != "" &&
+      cvcNumber != "" &&
+      monthYear != "" &&
+      cardNumber != "" &&
+      cardNumberError == "" &&
+      expiryYearError == "" &&
+      cvcNumberError == "" &&
+      monthYearError == "" &&
+      nameError == ""
+    ) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  }, [cardNumberError,expiryYearError,cvcNumberError,monthYearError,nameError])
   return (
     <Container>
       <div className="name-div">
@@ -198,7 +206,7 @@ const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
           {cvcNumberError && <span className="error">{cvcNumberError}</span>}
         </div>
       </Forms>
-      <Button onClick={validateINputs}>Confirm</Button>
+      <Button onClick={validateInputs}>Confirm</Button>
     </Container>
   );
 };
