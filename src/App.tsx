@@ -12,6 +12,7 @@ function App() {
   const [monthYear, setMonthYear] = useState<string>("");
   const [cvcNumber, setCvcNumber] = useState<string>("");
   const [name, setName] = useState<string>("");
+  const [isValid, setIsValid] = useState<boolean>(false)
 
   const handleCardNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
     let newValue = event.target.value;
@@ -77,8 +78,11 @@ function App() {
               handleMonthYearChange={handleMonthYearChange}
               handleCvcChange={handleCvcChange}
               handleNameChange={handleNameChange}/>
+              {!isValid ?
           <FormDiv>
             <Forms
+              isValid={isValid}
+              setIsValid={setIsValid}
               name={name}
               setName={setName}
               cvcNumber={cvcNumber}
@@ -95,7 +99,8 @@ function App() {
               handleCvcChange={handleCvcChange}
               handleNameChange={handleNameChange}
             />
-          </FormDiv>
+          </FormDiv> : null}
+          
         </Container>
       </Body>
     </>

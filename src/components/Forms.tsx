@@ -6,7 +6,7 @@ import React, {
 } from "react";
 import styled from "styled-components";
 
-interface FormsHeaderProps {
+interface FormsHeaderProps{
   monthYear: string;
   setMonthYear: React.Dispatch<React.SetStateAction<string>>;
   cardNumber: string;
@@ -22,6 +22,8 @@ interface FormsHeaderProps {
   handleMonthYearChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleCvcChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleNameChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  isValid: boolean;
+  setIsValid: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
@@ -33,6 +35,8 @@ const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
   const [monthYearError, setMonthYearError] = useState<string>("");
 
   const {
+    isValid,
+    setIsValid,
     monthYear,
     setMonthYear,
     cardNumber,
@@ -82,6 +86,18 @@ const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
       setMonthYearError("Can’t be blank");
     } else {
       setMonthYearError("");
+    }
+
+    if (
+      !nameError &&
+      !cardNumberError &&
+      !expiryYearError &&
+      !cvcNumberError &&
+      !monthYearError
+    ) {
+      setIsValid(true)
+    } else {
+      setIsValid(false)
     }
   };
 
