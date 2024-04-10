@@ -64,7 +64,7 @@ const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
 
     if (!cardNumber.trim()) {
       setCardNumberError("Can’t be blank");
-    } else if (cardNumber.length < 16) {
+    } else if (cardNumber.length < 19) {
       setCardNumberError("Enter full number");
     } else {
       setCardNumberError("");
