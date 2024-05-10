@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import CardBack from "../../public/images/bg-card-back.png";
 import CardFront from "../../public/images/bg-card-front.png";
-import React, { ChangeEventHandler, ChangeEvent } from "react";
+import React, { ChangeEvent } from "react";
 
 interface CardsProps{
   monthYear: string;
@@ -24,19 +24,10 @@ interface CardsProps{
 const Cards: React.FC<CardsProps> = (props) => {
   const {
     monthYear,
-    setMonthYear,
     cardNumber,
-    setCardNumber,
     expiryYear,
-    setExpiryYear,
     cvcNumber,
-    setCvcNumber,
     name,
-    setName,
-    handleCardNumberChange,
-    handleExpiryYearChange,
-    handleMonthYearChange,
-    handleNameChange,
   } = props;
 
   return (

@@ -1,7 +1,6 @@
 import React, {
   useState,
   ChangeEvent,
-  ChangeEventHandler,
   useEffect,
 } from "react";
 import styled from "styled-components";
@@ -35,18 +34,13 @@ const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
   const [monthYearError, setMonthYearError] = useState<string>("");
 
   const {
-    isValid,
+
     setIsValid,
     monthYear,
-    setMonthYear,
     cardNumber,
-    setCardNumber,
     expiryYear,
-    setExpiryYear,
     cvcNumber,
-    setCvcNumber,
     name,
-    setName,
     handleCardNumberChange,
     handleExpiryYearChange,
     handleMonthYearChange,
@@ -87,8 +81,6 @@ const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
     } else {
       setMonthYearError("");
     }
-
-    
   };
 
   useEffect(() => {
@@ -108,7 +100,13 @@ const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
     } else {
       setIsValid(false);
     }
-  }, [cardNumberError,expiryYearError,cvcNumberError,monthYearError,nameError])
+  }, [
+    cardNumberError,
+    expiryYearError,
+    cvcNumberError,
+    monthYearError,
+    nameError,
+  ]);
   return (
     <Container>
       <div className="name-div">
@@ -213,7 +211,6 @@ const FormsHeader: React.FC<FormsHeaderProps> = (props) => {
 
 export default FormsHeader;
 
-const errorColor = "red";
 
 const Container = styled.div`
   display: flex;
