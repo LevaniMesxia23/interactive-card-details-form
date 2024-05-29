@@ -1,5 +1,5 @@
 import Cards from "./components/Cards";
-import React, { useState, ChangeEvent, ChangeEventHandler } from "react";
+import { useState, ChangeEvent } from "react";
 import Forms from "./components/Forms";
 import GlobalStyles from "./styles/GlobalStyles";
 import MainMobile from "../public/images/bg-main-mobile.png";
